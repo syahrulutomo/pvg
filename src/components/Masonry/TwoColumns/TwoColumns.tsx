@@ -1,23 +1,48 @@
-import React from 'react'
+import React, { useMemo } from 'react'
+import type { FC } from 'react'
 
 import Card from '@/components/Card'
 import { containerCx, sectionCx } from '../style'
+import type { MasonryProps } from '../types'
 
+const TwoColumns: FC<MasonryProps> = (props) => {
+  const { data, loading } = props
 
-const TwoColumns = () => {
+  const leftProducts = useMemo(() => {
+    if (!data) return [];
+
+    if (data.length > 0) {
+      return data.filter((current: any, index: number) => {
+        if (index % 2 === 0) return current;
+      }).map((item: any, index: number) => {
+        return (
+          <Card key={index} title={item.alt_description} user={item.user.first_name} image={item.urls} loading={loading} avatar={item.user.profile_image.medium} />
+        )
+      });
+    }
+  }, [data, loading]);
+
+  const rightProducts = useMemo(() => {
+    if (!data) return [];
+
+    if (data.length > 0) {
+      return data.filter((current: any, index: number) => {
+        if (index % 2 !== 0) return current;
+      }).map((item: any, index: number) => {
+        return (
+          <Card key={index} title={item.alt_description} user={item.user.firstname} image={item.urls} loading={loading} avatar={item.user.profile_image.medium} />
+        )
+      });
+    }
+  }, [data, loading]);
+
   return (
     <div className={containerCx(2)}>
       <div className={sectionCx}>
-        <Card title="Title" subtitle="Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ' Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their" />
-        <Card title="Title" subtitle="Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ' Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their" />
-        <Card title="Title" subtitle="Subtitle" />
-        <Card title="Title" subtitle="Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ' Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their" />
+        {leftProducts}
       </div>
       <div className={sectionCx}>
-        <Card title="Title" subtitle="Subtitle" />
-        <Card title="Title" subtitle="Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ' Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their" />
-        <Card title="Title" subtitle="Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ' Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their" />
-        <Card title="Title" subtitle="Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ' Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their" />
+        {rightProducts}
       </div>
     </div>
   )
