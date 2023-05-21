@@ -27,7 +27,7 @@ const useHome = (page: number) => {
     const temp = [] as any;
     if (data) {
       data?.pages.forEach((item) => {
-        if (Array.isArray(item) && item.length > 0) temp.push(...item);
+        if (Array.isArray(item)) temp.push(...item);
       })
     }
 

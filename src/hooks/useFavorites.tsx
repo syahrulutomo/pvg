@@ -11,7 +11,7 @@ const useFavorites = (id: string) => {
   }, [])
 
   const hasChoosen = useMemo(() => {
-    if (favorites.length > 0 ) {
+    if (favorites) {
       return favorites.some((item) => item === id) 
     }
 
