@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 import useFavorites from '@/hooks/useFavorites'
 import SocialShare from '@/components/SocialShare'
 import Avatar from './Avatar'
-import Favorite from './Favorite'
+// import Favorite from './Favorite'
 import Loader from './Loader'
 import { containerCx, imageCx, titleCx, infoContainerCx, avatarContainerCx, userCx } from './style'
 import type { URLType } from '@/models/types'
@@ -35,18 +35,18 @@ const Card: FC<CardProps> = (props) => {
     onClick(image)
   }, [onClick, image])
 
-  const handleClickFavorite = useCallback(() => {
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('pvg_favorites', JSON.stringify([...favorites, id]))
-      router.reload()
-    }
-  }, [favorites, id, router])
+  // const handleClickFavorite = useCallback(() => {
+  //   if (typeof window !== 'undefined') {
+  //     localStorage.setItem('pvg_favorites', JSON.stringify([...favorites, id]))
+  //     router.reload()
+  //   }
+  // }, [favorites, id, router])
 
   return (
     loading ? <Loader />
       : (
         <div className={containerCx}>
-          <Favorite isFilled={hasChoosen} onClick={handleClickFavorite} />
+          {/* <Favorite isFilled={hasChoosen} onClick={handleClickFavorite} /> */}
           <div className={imageCx} onClick={_onClick}>
             <Image
               loader={myLoader}
