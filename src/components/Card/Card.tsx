@@ -24,7 +24,7 @@ interface CardProps {
 const Card: FC<CardProps> = (props) => {
   const { id, title, user, image, loading, avatar, onClick } = props
   const [isSocialOpen, setIsSocialOpen] = useState(false)
-  const { favorites, hasChoosen } = useFavorites(id)
+  // const { favorites, hasChoosen } = useFavorites(id)
   const router = useRouter()
 
   const myLoader = () => {

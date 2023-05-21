@@ -46,8 +46,8 @@ const Home = () => {
   useEffect(() => {
     if (entry && inView && isLoaded) {
       setPage(prev => prev + 1)
-      const offsetTop = Number(entry.target)
-      if (typeof window !== undefined) window.scrollTo(0, offsetTop - 120)
+      // const offsetTop = Number(entry.target)
+      // if (typeof window !== undefined) window.scrollTo(0, offsetTop - 120)
     }
   }, [entry, fetchNextPage, inView, isLoaded])
 

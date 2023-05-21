@@ -10,6 +10,7 @@ import Lightbox from '@/components/Lightbox'
 import IconLoad from '@/components/Icon/Autorenew'
 import { buttonCx } from '../Home/style'
 import { URLType } from '@/models/types'
+import useScreenSize from '@/hooks/useScreenSize'
 
 const Search: FC = () => {
   const router = useRouter()
@@ -30,6 +31,7 @@ const Search: FC = () => {
 
   const { collectedData, error, isFetching, fetchNextPage } = useSearch(keyword, page)
   const { ref, inView, entry, isLoaded } = useIOLazyLoad(isFetching, collectedData);
+  const { width } = useScreenSize()
 
   const handleClick = useCallback(() => {
     setPage(prev => prev + 1);
@@ -50,9 +52,16 @@ const Search: FC = () => {
     if (entry && inView && isLoaded) {
       setPage(prev => prev + 1)
       const offsetTop = Number(entry.target) as any
-      if (typeof window !== undefined) window.scrollTo(0, offsetTop - 120)
+
+      if (typeof window !== undefined) {
+        if (width && width < 768) {
+           window.scrollTo(0, offsetTop - 40)
+        } else {
+          window.scrollTo(0, offsetTop - 100)
+        }
+      }
     }
-  }, [entry, fetchNextPage, inView, isLoaded])
+  }, [entry, fetchNextPage, inView, isLoaded, width])
 
   if (error) router.push('/error')
 
