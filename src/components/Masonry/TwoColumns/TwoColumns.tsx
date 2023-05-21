@@ -27,7 +27,7 @@ const TwoColumns: FC<MasonryProps> = (props) => {
       if (index % 2 !== 0) return current;
     }).map((item: any, index: number) => {
       return (
-        <Card key={index} id={item.id} title={item.alt_description} user={item.user.firstname} image={item.urls} loading={loading} avatar={item.user.profile_image.medium} onClick={handleClickCard} />
+        <Card key={index} id={item.id} title={item.alt_description} user={item.user.first_name} image={item.urls} loading={loading} avatar={item.user.profile_image.medium} onClick={handleClickCard} />
       )
     });
   }, [data, loading, handleClickCard]);

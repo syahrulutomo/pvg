@@ -36,8 +36,10 @@ const Card: FC<CardProps> = (props) => {
   }, [onClick, image])
 
   const handleClickFavorite = useCallback(() => {
-    localStorage.setItem('pvg_favorites', JSON.stringify([...favorites, id]))
-    router.reload()
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('pvg_favorites', JSON.stringify([...favorites, id]))
+      router.reload()
+    }
   }, [favorites, id, router])
 
   return (
