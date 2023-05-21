@@ -1,12 +1,11 @@
 import React from 'react'
-
-import { loaderCx } from './style'
+import type { FC } from 'react'
 import { cx } from '@emotion/css'
 
-const Loader = () => {
+import { loaderCx } from './style'
 
+const Loader: FC = () => {
   const classes = cx('shimmer', loaderCx)
-
   return (
     <div className={classes} />
   )

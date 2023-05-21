@@ -6,7 +6,7 @@ import { containerCx, sectionCx } from '../style'
 import type { MasonryProps } from '../types'
 
 const TwoColumns: FC<MasonryProps> = (props) => {
-  const { data, loading } = props
+  const { data, loading, handleClickCard } = props
 
   const leftProducts = useMemo(() => {
     if (!data) return [];
@@ -16,11 +16,11 @@ const TwoColumns: FC<MasonryProps> = (props) => {
         if (index % 2 === 0) return current;
       }).map((item: any, index: number) => {
         return (
-          <Card key={index} title={item.alt_description} user={item.user.first_name} image={item.urls} loading={loading} avatar={item.user.profile_image.medium} />
+          <Card key={index} id={item.id} title={item.alt_description} user={item.user.first_name} image={item.urls} loading={loading} avatar={item.user.profile_image.medium} onClick={handleClickCard} />
         )
       });
     }
-  }, [data, loading]);
+  }, [data, loading, handleClickCard]);
 
   const rightProducts = useMemo(() => {
     if (!data) return [];
@@ -30,11 +30,11 @@ const TwoColumns: FC<MasonryProps> = (props) => {
         if (index % 2 !== 0) return current;
       }).map((item: any, index: number) => {
         return (
-          <Card key={index} title={item.alt_description} user={item.user.firstname} image={item.urls} loading={loading} avatar={item.user.profile_image.medium} />
+          <Card key={index} id={item.id} title={item.alt_description} user={item.user.firstname} image={item.urls} loading={loading} avatar={item.user.profile_image.medium} onClick={handleClickCard} />
         )
       });
     }
-  }, [data, loading]);
+  }, [data, loading, handleClickCard]);
 
   return (
     <div className={containerCx(2)}>

@@ -10,8 +10,6 @@ interface AvatarProps {
 const Avatar: FC<AvatarProps> = (props) => {
   const { src } = props
 
-  console.log(src);
-
   return (
     <div className={avatarCx(src)} />
   )

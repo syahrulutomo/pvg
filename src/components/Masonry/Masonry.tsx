@@ -6,17 +6,16 @@ import TwoColumns from './TwoColumns'
 import ThreeColumns from './ThreeColumns'
 import type { MasonryProps } from './types'
 
-
 const Masonry: FC<MasonryProps> = (props) => {
-  const { data, loading } = props
+  const { data, loading, handleClickCard } = props
   
-  const { screenSize } = useScreenSize();
+  const screenSize = useScreenSize();
 
   const renderColumn = useMemo(() => {
-    if (screenSize.width < 600) return <TwoColumns  data={data} loading={loading} />
+    if (screenSize?.width as any < 600) return <TwoColumns data={data} loading={loading} handleClickCard={handleClickCard} />
 
-    return <ThreeColumns data={data} loading={loading} />
-  }, [screenSize, data, loading]) 
+    return <ThreeColumns data={data} loading={loading} handleClickCard={handleClickCard} />
+  }, [screenSize, data, loading, handleClickCard]) 
 
   return renderColumn
 }

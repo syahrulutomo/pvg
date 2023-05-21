@@ -383,4 +383,8 @@ body {
   animation-iteration-count: infinite;
   animation-name: placeholderShimmer;
   animation-timing-function: linear;
-  }
+}
+
+.rotated {
+  transform: rotate(360deg);
+}

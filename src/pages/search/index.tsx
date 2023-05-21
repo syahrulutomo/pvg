@@ -1,22 +1,22 @@
 import { Fragment } from 'react'
 import Head from 'next/head'
 
-import HomeModule from '@/modules/Home'
+import SearchModule from '@/modules/Search'
 
-const Home = () => {
+const Search = () => {
   return (
     <Fragment>
       <Head>
-        <title>PVG Photos</title>
-        <meta name="description" content="PVG Photos" />
+        <title>Search | PVG Photos</title>
+        <meta name="description" content="PVG Photos Search" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <HomeModule />
+        <SearchModule />
       </main>
     </Fragment>
   )
 }
 
-export default Home
+export default Search

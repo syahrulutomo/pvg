@@ -18,4 +18,5 @@ export const containerCx = css`
 export const titleCx = css`
   font-size: 20px;
   font-weight: 400;
+  cursor: pointer;
 `

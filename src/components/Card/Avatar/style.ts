@@ -5,4 +5,5 @@ export const avatarCx = (src: string) => css`
   border-radius: 50%;
   width: 24px;
   height: 24px;
+  background-size: 24px 24px;
 `

@@ -3,7 +3,7 @@ import { COLORS } from "@/styles/colors";
 
 export const containerCx = css`
   position: relative;
-  border-radius: 4px;
+  border-radius: 6px;
   width: 100%;
   margin-bottom: 16px;
 `
@@ -12,13 +12,13 @@ export const imageCx = css`
   position: relative;
   width: 100%;
   aspect-ratio: 1 / 1; 
-  border-radius: 4px;
+  border-radius: 6px;
 `
 
 export const infoContainerCx = css`
   background-color: ${COLORS.black100};
   padding: 16px 16px 24px;
-  border-radius: 4px;
+  border-radius: 6px;
 `;
 
 export const titleCx = css`

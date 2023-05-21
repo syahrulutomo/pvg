@@ -1,1 +1,1 @@
-export { default } from './Dynamic'
+export { default } from './TopNavigation'
